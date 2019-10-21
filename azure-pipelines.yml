@@ -5,7 +5,7 @@ jobs:
   timeoutInMinutes: 120
   steps:
   - script: |
-      wget "${PACKAGE_URL}"
+      wget --quiet "${PACKAGE_URL}"
       sha256sum "${PACKAGE_NAME}"
   strategy:
     matrix:
@@ -23,8 +23,28 @@ jobs:
         PACKAGE_URL: "https://download.pytorch.org/libtorch/cu92/libtorch-win-shared-with-deps-debug-1.2.0.zip"
         PACKAGE_NAME: "libtorch-win-shared-with-deps-debug-1.2.0.zip"
       1.2.0-Windows-Debug-10.0:
-        PACKAGE_URL: "https://download.pytorch.org/libtorch/cu92/libtorch-win-shared-with-deps-debug-1.2.0.zip"
+        PACKAGE_URL: "https://download.pytorch.org/libtorch/cu100/libtorch-win-shared-with-deps-debug-1.2.0.zip"
         PACKAGE_NAME: "libtorch-win-shared-with-deps-debug-1.2.0.zip"
       1.2.0-Windows-Debug-None:
         PACKAGE_URL: "https://download.pytorch.org/libtorch/cpu/libtorch-win-shared-with-deps-debug-1.2.0.zip"
         PACKAGE_NAME: "libtorch-win-shared-with-deps-debug-1.2.0.zip"
+
+      1.2.0-Linux-libstdc++11-9.2:
+        PACKAGE_URL: "https://download.pytorch.org/libtorch/cu92/libtorch-cxx11-abi-shared-with-deps-1.2.0.zip"
+        PACKAGE_NAME: "libtorch-cxx11-abi-shared-with-deps-1.2.0.zip"
+      1.2.0-Linux-libstdc++11-10.0:
+        PACKAGE_URL: "https://download.pytorch.org/libtorch/cu100/libtorch-cxx11-abi-shared-with-deps-1.2.0.zip"
+        PACKAGE_NAME: "libtorch-cxx11-abi-shared-with-deps-1.2.0.zip"
+      1.2.0-Linux-libstdc++11-None:
+        PACKAGE_URL: "https://download.pytorch.org/libtorch/cpu/libtorch-cxx11-abi-shared-with-deps-1.2.0.zip"
+        PACKAGE_NAME: "libtorch-cxx11-abi-shared-with-deps-1.2.0.zip"
+
+      1.2.0-Linux-libstdc++-9.2:
+        PACKAGE_URL: "https://download.pytorch.org/libtorch/cu92/libtorch-shared-with-deps-1.2.0.zip"
+        PACKAGE_NAME: "libtorch-shared-with-deps-1.2.0.zip"
+      1.2.0-Linux-libstdc++-10.0:
+        PACKAGE_URL: "https://download.pytorch.org/libtorch/cu100/libtorch-shared-with-deps-1.2.0.zip"
+        PACKAGE_NAME: "libtorch-shared-with-deps-1.2.0.zip"
+      1.2.0-Linux-libstdc++-None:
+        PACKAGE_URL: "https://download.pytorch.org/libtorch/cpu/libtorch-shared-with-deps-1.2.0.zip"
+        PACKAGE_NAME: "libtorch-shared-with-deps-1.2.0.zip"
