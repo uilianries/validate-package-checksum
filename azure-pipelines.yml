@@ -1,0 +1,30 @@
+jobs:
+- job: Docker
+  pool:
+    vmImage: 'ubuntu-16.04'
+  timeoutInMinutes: 120
+  steps:
+  - script: |
+      wget "${PACKAGE_URL}"
+      sha256sum "${PACKAGE_NAME}"
+  strategy:
+    matrix:
+      1.2.0-Windows-Release-9.2:
+        PACKAGE_URL: "https://download.pytorch.org/libtorch/cu92/libtorch-win-shared-with-deps-1.2.0.zip"
+        PACKAGE_NAME: "libtorch-win-shared-with-deps-1.2.0.zip"
+      1.2.0-Windows-Release-10.0:
+        PACKAGE_URL: "https://download.pytorch.org/libtorch/cu100/libtorch-win-shared-with-deps-1.2.0.zip"
+        PACKAGE_NAME: "libtorch-win-shared-with-deps-1.2.0.zip"
+      1.2.0-Windows-Release-None:
+        PACKAGE_URL: "https://download.pytorch.org/libtorch/cpu/libtorch-win-shared-with-deps-1.2.0.zip"
+        PACKAGE_NAME: "libtorch-win-shared-with-deps-1.2.0.zip"
+
+      1.2.0-Windows-Debug-9.2:
+        PACKAGE_URL: "https://download.pytorch.org/libtorch/cu92/libtorch-win-shared-with-deps-debug-1.2.0.zip"
+        PACKAGE_NAME: "libtorch-win-shared-with-deps-debug-1.2.0.zip"
+      1.2.0-Windows-Debug-10.0:
+        PACKAGE_URL: "https://download.pytorch.org/libtorch/cu92/libtorch-win-shared-with-deps-debug-1.2.0.zip"
+        PACKAGE_NAME: "libtorch-win-shared-with-deps-debug-1.2.0.zip"
+      1.2.0-Windows-Debug-None:
+        PACKAGE_URL: "https://download.pytorch.org/libtorch/cpu/libtorch-win-shared-with-deps-debug-1.2.0.zip"
+        PACKAGE_NAME: "libtorch-win-shared-with-deps-debug-1.2.0.zip"
